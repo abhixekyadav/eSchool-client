@@ -1,0 +1,27 @@
+/* Hide scrollbar for Chrome, Safari and Opera */
+::-webkit-scrollbar {
+  display: none;
+}
+
+
+body {
+  font-family: 'Nunito', sans-serif;
+}
+
+.square {
+  border-radius: 0px;
+}
+
+.jumbotron {
+  /* background-image: linear-gradient(to right, #007bff, #000); */
+  background-image: linear-gradient(to right, #ff0000, #ff9900);
+  color: #fff;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.wrapper1 {
+  height: 100vh;  
+}
