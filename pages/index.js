@@ -105,7 +105,8 @@ const Index = ({ courses }) => {
 };
 
 export async function getServerSideProps() {
-  const { data } = await axios.get(`${process.env.API}/courses`);
+  const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/courses`);
+  console.log("courses", data);
   return {
     props: {
       courses: data,

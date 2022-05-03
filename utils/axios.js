@@ -1,15 +1,11 @@
 import axios from "axios";
 
 export const axiosPublic = axios.create({
-  // baseURL: process.env.NEXT_PUBLIC_API,
-  baseURL:
-    "http://eschoolserver-env.eba-hjip9cn7.ap-south-1.elasticbeanstalk.com/api/",
+  baseURL: process.env.NEXT_PUBLIC_API,
 });
 
 export const axiosAuth = axios.create({
-  // baseURL: process.env.API,
-  baseURL:
-    "http://eschoolserver-env.eba-hjip9cn7.ap-south-1.elasticbeanstalk.com/api/",
+  baseURL: process.env.API,
 });
 
 // axiosAuth.interceptors.request.use(
