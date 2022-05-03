@@ -10,10 +10,20 @@ const CourseCard = ({ course }) => {
   const { name, instructor, image, slug, categories } = course;
   const [students, setStudents] = useState(0);
 
+  // const studentCount = async () => {
+  //   const { data } = await axios.post(`/api/instructor/student-count`, {
+  //     courseId: course._id,
+  //   });
+  //   setStudents(data.length);
+  // };
+
   const studentCount = async () => {
-    const { data } = await axios.post(`/api/instructor/student-count`, {
-      courseId: course._id,
-    });
+    const { data } = await axios.post(
+      `http://eschoolserver-env.eba-hjip9cn7.ap-south-1.elasticbeanstalk.com/api/instructor/student-count`,
+      {
+        courseId: course._id,
+      }
+    );
     setStudents(data.length);
   };
 
