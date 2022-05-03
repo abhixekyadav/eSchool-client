@@ -19,7 +19,7 @@ const CourseCard = ({ course }) => {
 
   const studentCount = async () => {
     const { data } = await axios.post(
-      `http://eschoolserver-env.eba-hjip9cn7.ap-south-1.elasticbeanstalk.com/api/instructor/student-count`,
+      `${process.env.NEXT_PUBLIC_API}/instructor/student-count`,
       {
         courseId: course._id,
       }
