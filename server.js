@@ -5,6 +5,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const dev = process.env.NODE_ENV !== "production";
 const app = next({ dev });
 const handle = app.getRequestHandler();
+console.log("dev", dev);
 
 app
   .prepare()
