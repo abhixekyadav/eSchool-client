@@ -33,7 +33,7 @@ const TopNav = () => {
 
   useEffect(async () => {
     if (state.user == null) return;
-    const { data } = await axios.get("/api/current-user");
+    const { data } = await axios.get(`${NEXT_PUBLIC_API}/current-user`);
     data && setUser(data.user);
   }, [state]);
   // console.log("user", user);
