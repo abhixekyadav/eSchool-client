@@ -23,7 +23,9 @@ const SingleCourse = ({ course }) => {
   }, [user, course]);
 
   const checkEnrollment = async () => {
-    const { data } = await axios.get(`/api/check-enrollment/${course._id}`);
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/check-enrollment/${course._id}`
+    );
     setEnrolled(data);
   };
 
@@ -39,7 +41,9 @@ const SingleCourse = ({ course }) => {
       if (enrolled.status)
         return router.push(`/user/course/${enrolled.course.slug}`);
       setLoading(true);
-      const { data } = await axios.post(`/api/free-enrollment/${course._id}`);
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/free-enrollment/${course._id}`
+      );
       toast(data.message);
       setLoading(false);
       router.push(`/user/course/${data.course.slug}`);

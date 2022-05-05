@@ -29,10 +29,13 @@ const Login = () => {
     e.preventDefault();
     try {
       setLoading(true);
-      const { data } = await axios.post(`/api/login`, {
-        email,
-        password,
-      });
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_API}/login`,
+        {
+          email,
+          password,
+        }
+      );
       dispatch({
         type: "LOGIN",
         payload: data,

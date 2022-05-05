@@ -33,7 +33,9 @@ const TopNav = () => {
 
   useEffect(async () => {
     if (state.user == null) return;
-    const { data } = await axios.get(`${NEXT_PUBLIC_API}/current-user`);
+    const { data } = await axios.get(
+      `${process.env.NEXT_PUBLIC_API}/current-user`
+    );
     data && setUser(data.user);
   }, [state]);
   // console.log("user", user);
@@ -41,7 +43,7 @@ const TopNav = () => {
   const logout = async () => {
     dispatch({ type: "LOGOUT" });
     window.localStorage.removeItem("user");
-    const { data } = await axios.get(`${NEXT_PUBLIC_API}/logout`);
+    const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/logout`);
     toast(data.message);
     window.location.pathname = "/login";
     // router.push("/login");

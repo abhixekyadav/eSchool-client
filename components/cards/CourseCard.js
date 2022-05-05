@@ -10,13 +10,6 @@ const CourseCard = ({ course }) => {
   const { name, instructor, image, slug, categories } = course;
   const [students, setStudents] = useState(0);
 
-  // const studentCount = async () => {
-  //   const { data } = await axios.post(`/api/instructor/student-count`, {
-  //     courseId: course._id,
-  //   });
-  //   setStudents(data.length);
-  // };
-
   const studentCount = async () => {
     const { data } = await axios.post(
       `${process.env.NEXT_PUBLIC_API}/instructor/student-count`,

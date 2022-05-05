@@ -5,16 +5,6 @@ import Link from "next/link";
 import { Context } from "../context";
 
 const Index = ({ courses }) => {
-  // const [courses, setCourses] = useState([]);
-
-  // useEffect(() => {
-  //   const fetchCourses = async () => {
-  //     const { data } = await axios.get("/api/courses");
-  //     setCourses(data);
-  //   };
-  //   fetchCourses();
-  // }, []);
-
   const { state } = useContext(Context);
 
   return (
