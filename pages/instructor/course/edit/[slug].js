@@ -204,7 +204,6 @@ const CourseEdit = () => {
       `${process.env.NEXT_PUBLIC_API}/course/${values._id}/${removed[0]._id}`
     );
     if (data.ok) toast("Deleted");
-    console.log("delete lesson => ", data);
   };
 
   const handleVideo = async (e) => {
@@ -214,7 +213,7 @@ const CourseEdit = () => {
         `${process.env.NEXT_PUBLIC_API}/course/video-remove/${values.instructor._id}`,
         current.video
       );
-      console.log("REMOVED ===> ", res);
+      // console.log("REMOVED ===> ", res);
     }
     // upload
     const file = e.target.files[0];

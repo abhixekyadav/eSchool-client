@@ -3,6 +3,8 @@ import axios from "axios";
 import CourseCard from "../components/cards/CourseCard";
 import Link from "next/link";
 import { Context } from "../context";
+// axios.defaults.baseURL = process.env.NEXT_PUBLIC_API;
+axios.defaults.withCredentials = true;
 
 const Index = ({ courses }) => {
   const { state } = useContext(Context);
@@ -96,7 +98,6 @@ const Index = ({ courses }) => {
 
 export async function getServerSideProps() {
   const { data } = await axios.get(`${process.env.NEXT_PUBLIC_API}/courses`);
-  console.log("courses", data);
   return {
     props: {
       courses: data,

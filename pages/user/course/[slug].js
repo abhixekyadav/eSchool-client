@@ -82,7 +82,7 @@ const SingleCourse = () => {
       const index = all.indexOf(course.lessons[clicked]._id);
       if (index > -1) {
         all.splice(index, 1);
-        console.log("ALL WITHOUT REMOVED => ", all);
+        // console.log("ALL WITHOUT REMOVED => ", all);
         setCompletedLessons(all);
         setUpdateState(!updateState);
       }

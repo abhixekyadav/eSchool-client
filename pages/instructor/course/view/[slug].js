@@ -101,7 +101,6 @@ const CourseView = () => {
         }
       );
       // once response is received
-      console.log(data);
       setValues({ ...values, video: data });
       setUploading(false);
     } catch (err) {
@@ -118,7 +117,6 @@ const CourseView = () => {
         `${process.env.NEXT_PUBLIC_API}/course/video-remove/${course.instructor._id}`,
         values.video
       );
-      console.log(data);
       setValues({ ...values, video: {} });
       setUploading(false);
       setUploadButtonText("Upload another video");
