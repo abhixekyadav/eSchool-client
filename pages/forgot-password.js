@@ -31,7 +31,8 @@ const ForgotPassword = () => {
     setLoading(true);
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/forgot-password`,
+        `/api/forgot-password`,
+        // `${process.env.NEXT_PUBLIC_API}/forgot-password`,
         { email }
       );
       setSuccess(true);
@@ -50,7 +51,8 @@ const ForgotPassword = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/reset-password`,
+        `/api/reset-password`,
+        // `${process.env.NEXT_PUBLIC_API}/reset-password`,
         {
           email,
           code,

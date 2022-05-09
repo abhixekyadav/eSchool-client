@@ -1,12 +1,12 @@
 import axios from "axios";
 
-export const axiosPublic = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API,
-});
+// export const axiosPublic = axios.create({
+//   baseURL: process.env.NEXT_PUBLIC_API,
+// });
 
-export const axiosAuth = axios.create({
-  baseURL: process.env.API,
-});
+// export const axiosAuth = axios.create({
+//   baseURL: process.env.API,
+// });
 
 // axiosAuth.interceptors.request.use(
 //   (config) => {

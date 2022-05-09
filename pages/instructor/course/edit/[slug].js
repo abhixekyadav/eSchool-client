@@ -59,7 +59,8 @@ const CourseEdit = () => {
 
   const fetchCourse = async () => {
     let { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API}/course/${slug}`
+      `/api/course/${slug}`
+      // `${process.env.NEXT_PUBLIC_API}/course/${slug}`
     );
     // console.log(data);
     setValues(data);
@@ -73,7 +74,8 @@ const CourseEdit = () => {
 
   const loadCategories = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API}/categories`
+      `/api/categories`
+      // `${process.env.NEXT_PUBLIC_API}/categories`
     );
     // console.log(data);
     setCategoryList(data);
@@ -88,7 +90,8 @@ const CourseEdit = () => {
     // console.log("HANDLE SUBMIT => ", values);
     try {
       const { data } = await axios.put(
-        `${process.env.NEXT_PUBLIC_API}/course/${values._id}`,
+        `/api/course/${values._id}`,
+        // `${process.env.NEXT_PUBLIC_API}/course/${values._id}`,
         {
           ...values,
           categories: selectedCategories,
@@ -108,7 +111,8 @@ const CourseEdit = () => {
     if (values.image && values.image.Location) {
       // console.log("YES VALUES IMAGE", values.image);
       let { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course/remove-image`,
+        `/api/course/remove-image`,
+        // `${process.env.NEXT_PUBLIC_API}/course/remove-image`,
         {
           image: values.image,
         }
@@ -133,7 +137,8 @@ const CourseEdit = () => {
         // post to s3
         try {
           let { data } = await axios.post(
-            `${process.env.NEXT_PUBLIC_API}/course/upload-image`,
+            `/api/course/upload-image`,
+            // `${process.env.NEXT_PUBLIC_API}/course/upload-image`,
             {
               image: uri,
             }
@@ -174,7 +179,8 @@ const CourseEdit = () => {
     // make request to backend to save the re-ordered lessons
     // console.log("SEND TO BACKEND", values.lessons);
     const { data } = await axios.put(
-      `${process.env.NEXT_PUBLIC_API}/course/${values._id}`,
+      `/api/course/${values._id}`,
+      // `${process.env.NEXT_PUBLIC_API}/course/${values._id}`,
       {
         ...values,
         categories: selectedCategories,
@@ -192,7 +198,8 @@ const CourseEdit = () => {
     // remove previous video
     if (removed && removed.length && removed[0].video) {
       let res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course/video-remove/${values.instructor._id}`,
+        `/api/course/video-remove/${values.instructor._id}`,
+        // `${process.env.NEXT_PUBLIC_API}/course/video-remove/${values.instructor._id}`,
         removed[0].video
       );
       // console.log(res);
@@ -201,19 +208,22 @@ const CourseEdit = () => {
     setValues({ ...values, lessons: allLessons });
     // console.log("removed", removed, "slug", slug);`
     const { data } = await axios.put(
-      `${process.env.NEXT_PUBLIC_API}/course/${values._id}/${removed[0]._id}`
+      `/api/course/${values._id}/${removed[0]._id}`
+      // `${process.env.NEXT_PUBLIC_API}/course/${values._id}/${removed[0]._id}`
     );
     if (data.ok) toast("Deleted");
+    console.log("delete lesson => ", data);
   };
 
   const handleVideo = async (e) => {
     // remove previous
     if (current.video && current.video.Location) {
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course/video-remove/${values.instructor._id}`,
+        `/api/course/video-remove/${values.instructor._id}`,
+        // `${process.env.NEXT_PUBLIC_API}/course/video-remove/${values.instructor._id}`,
         current.video
       );
-      // console.log("REMOVED ===> ", res);
+      console.log("REMOVED ===> ", res);
     }
     // upload
     const file = e.target.files[0];
@@ -227,7 +237,8 @@ const CourseEdit = () => {
     // console.log("videoData", videoData);
     // save progress bar and send video as form data to backend
     const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API}/course/video-upload/${values.instructor._id}`,
+      `/api/course/video-upload/${values.instructor._id}`,
+      // `${process.env.NEXT_PUBLIC_API}/course/video-upload/${values.instructor._id}`,
       videoData,
       {
         onUploadProgress: (e) =>
@@ -243,7 +254,8 @@ const CourseEdit = () => {
   const handleUpdateLesson = async (e) => {
     e.preventDefault();
     let { data } = await axios.put(
-      `${process.env.NEXT_PUBLIC_API}/course/lesson/${values._id}/${current._id}`,
+      `/api/course/lesson/${values._id}/${current._id}`,
+      // `${process.env.NEXT_PUBLIC_API}/course/lesson/${values._id}/${current._id}`,
       current
     );
     // console.log("LESSON UPDATED AND SAVED ===> ", data);

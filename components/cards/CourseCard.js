@@ -12,7 +12,8 @@ const CourseCard = ({ course }) => {
 
   const studentCount = async () => {
     const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API}/instructor/student-count`,
+      `/api/instructor/student-count`,
+      // `${process.env.NEXT_PUBLIC_API}/instructor/student-count`,
       {
         courseId: course._id,
       }

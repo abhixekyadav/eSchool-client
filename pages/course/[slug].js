@@ -24,7 +24,8 @@ const SingleCourse = ({ course }) => {
 
   const checkEnrollment = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API}/check-enrollment/${course._id}`
+      `/api/check-enrollment/${course._id}`
+      // `${process.env.NEXT_PUBLIC_API}/check-enrollment/${course._id}`
     );
     setEnrolled(data);
   };
@@ -42,7 +43,8 @@ const SingleCourse = ({ course }) => {
         return router.push(`/user/course/${enrolled.course.slug}`);
       setLoading(true);
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/free-enrollment/${course._id}`
+        // `${process.env.NEXT_PUBLIC_API}/free-enrollment/${course._id}`
+        `/api/free-enrollment/${course._id}`
       );
       toast(data.message);
       setLoading(false);
@@ -88,7 +90,10 @@ const SingleCourse = ({ course }) => {
 };
 
 export async function getServerSideProps({ query }) {
-  const { data } = await axios.get(`${process.env.API}/course/${query.slug}`);
+  const { data } = await axios.get(
+    `/api/course/${query.slug}`
+    // `${process.env.API}/course/${query.slug}`
+  );
   return {
     props: {
       course: data,

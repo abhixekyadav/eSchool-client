@@ -37,7 +37,8 @@ const CourseCreate = () => {
     Resizer.imageFileResizer(file, 720, 500, "JPEG", 100, 0, async (uri) => {
       try {
         let { data } = await axios.post(
-          `${process.env.NEXT_PUBLIC_API}/course/upload-image`,
+          `/api/course/upload-image`,
+          // `${process.env.NEXT_PUBLIC_API}/course/upload-image`,
           {
             image: uri,
           }
@@ -58,7 +59,8 @@ const CourseCreate = () => {
     try {
       setValues({ ...values, loading: true });
       const res = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course/remove-image`,
+        `/api/course/remove-image`,
+        // `${process.env.NEXT_PUBLIC_API}/course/remove-image`,
         { image }
       );
       setImage({});
@@ -76,7 +78,8 @@ const CourseCreate = () => {
     e.preventDefault();
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course`,
+        `/api/course`,
+        // `${process.env.NEXT_PUBLIC_API}/course`,
         {
           ...values,
           image,

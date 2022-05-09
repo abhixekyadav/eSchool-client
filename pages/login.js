@@ -30,7 +30,9 @@ const Login = () => {
     try {
       setLoading(true);
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/login`,
+        // `${process.env.NEXT_PUBLIC_API}/login`,
+        `/api/login`,
+        // "https://eschoolserver-env.eba-hjip9cn7.ap-south-1.elasticbeanstalk.com/api/login",
         {
           email,
           password,

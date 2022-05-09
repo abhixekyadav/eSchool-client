@@ -14,9 +14,11 @@ const InstructorIndex = () => {
 
   const loadCourses = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API}/instructor-courses`
+      `/api/instructor-courses`
+      // `${process.env.NEXT_PUBLIC_API}/instructor-courses`
     );
     setCourses(data);
+    // console.log("courses", data);
   };
 
   const myStyle = { marginTop: "-15px", fontSize: "10px" };

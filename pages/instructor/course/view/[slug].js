@@ -44,14 +44,16 @@ const CourseView = () => {
 
   const loadCourse = async () => {
     const { data } = await axios.get(
-      `${process.env.NEXT_PUBLIC_API}/course/${slug}`
+      `/api/course/${slug}`
+      // `${process.env.NEXT_PUBLIC_API}/course/${slug}`
     );
     setCourse(data);
   };
 
   const studentCount = async () => {
     const { data } = await axios.post(
-      `${process.env.NEXT_PUBLIC_API}/instructor/student-count`,
+      `/api/instructor/student-count`,
+      // `${process.env.NEXT_PUBLIC_API}/instructor/student-count`,
       {
         courseId: course._id,
       }
@@ -65,7 +67,8 @@ const CourseView = () => {
     // console.log(values);
     try {
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course/lesson/${slug}/${course.instructor._id}`,
+        `/api/course/lesson/${slug}/${course.instructor._id}`,
+        // `${process.env.NEXT_PUBLIC_API}/course/lesson/${slug}/${course.instructor._id}`,
         values
       );
       // console.log(data)
@@ -92,7 +95,8 @@ const CourseView = () => {
 
       // save progress bar and send video as form data to backend
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course/video-upload/${course.instructor._id}`,
+        `/api/course/video-upload/${course.instructor._id}`,
+        // `${process.env.NEXT_PUBLIC_API}/course/video-upload/${course.instructor._id}`,
         videoData,
         {
           onUploadProgress: (e) => {
@@ -114,7 +118,8 @@ const CourseView = () => {
     try {
       setUploading(true);
       const { data } = await axios.post(
-        `${process.env.NEXT_PUBLIC_API}/course/video-remove/${course.instructor._id}`,
+        `/api/course/video-remove/${course.instructor._id}`,
+        // `${process.env.NEXT_PUBLIC_API}/course/video-remove/${course.instructor._id}`,
         values.video
       );
       setValues({ ...values, video: {} });
@@ -134,7 +139,8 @@ const CourseView = () => {
       );
       if (!answer) return;
       const { data } = await axios.put(
-        `${process.env.NEXT_PUBLIC_API}/course/publish/${courseId}`
+        `/api/course/publish/${courseId}`
+        // `${process.env.NEXT_PUBLIC_API}/course/publish/${courseId}`
       );
       setCourse(data);
       toast("Congrats! Your course is live");
@@ -150,7 +156,8 @@ const CourseView = () => {
       );
       if (!answer) return;
       const { data } = await axios.put(
-        `${process.env.NEXT_PUBLIC_API}/course/unpublish/${courseId}`
+        `/api/course/unpublish/${courseId}`
+        // `${process.env.NEXT_PUBLIC_API}/course/unpublish/${courseId}`
       );
       setCourse(data);
       toast("Your course is unpublished");

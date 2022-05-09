@@ -17,7 +17,8 @@ const UserRoute = ({ children, showNav = true }) => {
   const fetchUser = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/current-user`
+        // `${process.env.NEXT_PUBLIC_API}/current-user`
+        `/api/current-user`
       );
       if (data.ok) setOk(true);
     } catch (err) {

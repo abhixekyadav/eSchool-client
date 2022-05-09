@@ -21,7 +21,8 @@ const UserIndex = () => {
     try {
       setLoading(true);
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/user-courses`
+        // `${process.env.NEXT_PUBLIC_API}/user-courses`
+        `/api/user-courses`
       );
       setCourses(data);
       setLoading(false);

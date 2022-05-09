@@ -17,7 +17,8 @@ const InstructorRoute = ({ children }) => {
   const fetchInstructor = async () => {
     try {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/current-instructor`
+        // `${process.env.NEXT_PUBLIC_API}/current-instructor`
+        `/api/current-instructor`
       );
       if (data.ok) setOk(true);
     } catch (err) {

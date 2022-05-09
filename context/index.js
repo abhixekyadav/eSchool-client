@@ -2,6 +2,9 @@ import { useReducer, createContext, useEffect } from "react";
 import axios from "axios";
 import { useRouter, userRouter } from "next/router";
 
+axios.defaults.baseURL = process.env.NEXT_PUBLIC_API;
+axios.defaults.withCredentials = true;
+
 // initial state
 const intialState = {
   user: null,
@@ -49,7 +52,10 @@ const Provider = ({ children }) => {
       if (res.status === 401 && res.config && !res.config.__isRetryRequest) {
         return new Promise((resolve, reject) => {
           axios
-            .get(`${process.env.NEXT_PUBLIC_API}/logout`)
+            .get(
+              `/api/logout`
+              // `${process.env.NEXT_PUBLIC_API}/logout`
+            )
             .then((data) => {
               console.log("/401 error > logout");
               dispatch({ type: "LOGOUT" });
@@ -69,9 +75,9 @@ const Provider = ({ children }) => {
   useEffect(() => {
     const getCsrfToken = async () => {
       const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API}/csrf-token`
+        `/api/csrf-token`
+        // `${process.env.NEXT_PUBLIC_API}/csrf-token`
       );
-      // console.log("CSRF", data);
       axios.defaults.headers["X-CSRF-Token"] = data.getCsrfToken;
     };
     getCsrfToken();
