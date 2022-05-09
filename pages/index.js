@@ -4,6 +4,7 @@ import CourseCard from "../components/cards/CourseCard";
 import Link from "next/link";
 import { Context } from "../context";
 
+// base url
 axios.defaults.baseURL = process.env.NEXT_PUBLIC_API;
 axios.defaults.withCredentials = true;
 
